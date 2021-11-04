@@ -32,6 +32,7 @@ public class Comida_Tipica implements Serializable {
 	private String id_sit_fk;
 	
 	public Comida_Tipica() {
+		super();
 	}
 
 	public Comida_Tipica(String descripcion_plat, String imagen_plat, String nombre_plat, String id_sit_fk) {
