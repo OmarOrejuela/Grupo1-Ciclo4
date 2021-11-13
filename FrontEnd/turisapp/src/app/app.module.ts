@@ -11,6 +11,9 @@ import { PaisComponent } from './components/pais/pais.component';
 import { RegionComponent } from './components/region/region.component';
 import { SitioComponent } from './components/sitio/sitio.component';
 import { DepartamentoComponent } from './components/departamento/departamento.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { LstpaisComponent } from './components/pais/lstpais/lstpais.component';
+import { FrmpaisComponent } from './components/pais/frmpais/frmpais.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { DepartamentoComponent } from './components/departamento/departamento.co
     PaisComponent,
     RegionComponent,
     SitioComponent,
-    DepartamentoComponent
+    DepartamentoComponent,
+    WelcomeComponent,
+    LstpaisComponent,
+    FrmpaisComponent
   ],
   imports: [
     BrowserModule,
