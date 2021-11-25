@@ -21,7 +21,7 @@ import com.turisApp.models.services.ISitioService;
 
 @CrossOrigin(origins = { "http://localhost:4200", "http://localhost" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/turismo")
 
 public class SitioRestController {
 	@Autowired
@@ -51,7 +51,7 @@ public class SitioRestController {
 		sitioValues.setDescripcion_sit(sitio.getDescripcion_sit());
 		sitioValues.setImagen_sit(sitio.getImagen_sit());
 		sitioValues.setNombre_sit(sitio.getNombre_sit());
-		sitioValues.setId_trg_fk(sitio.getId_trg_fk());
+		sitioValues.setRegiones(sitio.getRegiones());
 		return sitioService.save(sitioValues);
 	}
 

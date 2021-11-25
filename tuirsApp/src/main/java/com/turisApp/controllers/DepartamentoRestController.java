@@ -22,7 +22,7 @@ package com.turisApp.controllers;
 
 	@CrossOrigin(origins = { "http://localhost:4200", "http://localhost" })
 	@RestController
-	@RequestMapping("/api")
+	@RequestMapping("/api/turismo")
 	public class DepartamentoRestController {		
 		@Autowired
 		private IDepartamentoService departamentoService;
@@ -52,7 +52,7 @@ package com.turisApp.controllers;
 			Optional<Departamento> sitioActual = departamentoService.findById(id);
 			Departamento sitioValues = sitioActual.get();
 			sitioValues.setNombre_dep(departamento.getNombre_dep());
-			sitioValues.setId_pais_fk(departamento.getId_pais_fk());
+			sitioValues.setPaises(departamento.getPaises());
 			return departamentoService.save(sitioValues);
 		}
 

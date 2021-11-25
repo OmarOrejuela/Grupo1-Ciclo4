@@ -14,4 +14,6 @@ public interface IRegionService {
 	public Region save (Region region);
 	
 	public void delete (long id);
+	
+	public List<Region> findByDepId(String idDep);
 }

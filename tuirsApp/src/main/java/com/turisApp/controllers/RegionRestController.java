@@ -24,7 +24,7 @@ import com.turisApp.models.services.SequenceGeneratorService;
 
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/turismo")
 public class RegionRestController {
 
 	@Autowired
@@ -55,7 +55,7 @@ public class RegionRestController {
 		Optional<Region> sitioActual = regService.findById(id);
 		Region sitioValues = sitioActual.get();
 		sitioValues.setNombre_reg(region.getNombre_reg());
-		sitioValues.setId_dep_fk(region.getId_dep_fk());
+		sitioValues.setDep(region.getDep());
 		return regService.save(sitioValues);
 	}
 	
@@ -63,5 +63,10 @@ public class RegionRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		regService.delete(id);
+	}
+	
+	@GetMapping("/regiones/dep/{idDep}")
+	public List<Region> deps(@PathVariable String idDep){
+		return regService.findByDepId(idDep);
 	}
 }

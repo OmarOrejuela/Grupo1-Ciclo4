@@ -22,7 +22,7 @@ import com.turisApp.models.services.SequenceGeneratorService;
 
 @CrossOrigin(origins = { "http://localhost:4200", "http://localhost" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/turismo")
 public class PaisRestController {
 	
 	@Autowired

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.turisApp.models.dao.IComidaTipicaDao;
 import com.turisApp.models.entity.Comida_Tipica;
-
 @Service
 public class ComidaTipicaServiceImpl implements IComidaTipicaService {
 
 	@Autowired
 	private IComidaTipicaDao comidatipicaDao;
+	
 	@Override
 	public List<Comida_Tipica> findAll() {
 		// TODO Auto-generated method stub

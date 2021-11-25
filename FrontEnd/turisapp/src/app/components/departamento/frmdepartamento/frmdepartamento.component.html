@@ -1,0 +1,8 @@
+<ul *ngFor="let dep of misDepart">
+    <li>{{dep.nombre_dep}}-{{dep['paises'].nombre_pais}}</li>
+</ul>
+<label for="deps">Departamentos</label>
+<br>
+<select id="deps" name="deps">
+<option value="{{dep.id_dep}}" *ngFor="let dep of misDepart">{{dep.nombre_dep}}-{{dep['paises'].nombre_pais}}</option>
+</select>

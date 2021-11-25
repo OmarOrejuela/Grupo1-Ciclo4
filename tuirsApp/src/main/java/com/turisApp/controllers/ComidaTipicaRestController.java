@@ -20,14 +20,17 @@ import com.turisApp.models.entity.Comida_Tipica;
 import com.turisApp.models.services.IComidaTipicaService;
 import com.turisApp.models.services.SequenceGeneratorService;
 
+
+
 @CrossOrigin(origins = { "http://localhost:4200", "http://localhost" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/turismo")
 public class ComidaTipicaRestController {
+	
 	@Autowired
 	private IComidaTipicaService comidaTipicaService;
 	@Autowired
-	private SequenceGeneratorService service;
+	private SequenceGeneratorService servicecom;
 	
 	@GetMapping("/comida")
 	public List<Comida_Tipica> index(){
@@ -42,7 +45,7 @@ public class ComidaTipicaRestController {
 	@PostMapping("/comida")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Comida_Tipica create(@RequestBody Comida_Tipica comida_Tipica) {
-		comida_Tipica.setId_pla(service.getSequenceNumber(Comida_Tipica.SEQUENCE_NAME));
+		comida_Tipica.setId_pla(servicecom.getSequenceNumber(Comida_Tipica.SEQUENCE_NAME));
 		return comidaTipicaService.save(comida_Tipica);
 	}
 	
@@ -51,10 +54,10 @@ public class ComidaTipicaRestController {
 	public Comida_Tipica update(@RequestBody Comida_Tipica comida_Tipica, @PathVariable long id) {
 		Optional<Comida_Tipica> comidaActual = comidaTipicaService.findById(id);
 		Comida_Tipica comidaValues = comidaActual.get();
+		comidaValues.setNombre_plat(comida_Tipica.getNombre_plat());
 		comidaValues.setDescripcion_plat(comida_Tipica.getDescripcion_plat());
 		comidaValues.setImagen_plat(comida_Tipica.getImagen_plat());
-		comidaValues.setNombre_plat(comida_Tipica.getNombre_plat());
-		comidaValues.setId_sit_fk(comida_Tipica.getId_sit_fk());
+		comidaValues.setSitios(comida_Tipica.getSitios());
 		return comidaTipicaService.save(comidaValues);
 	}
 	

@@ -14,5 +14,7 @@ public interface ISitioService {
 	public Sitio save(Sitio sitio);
 	
 	public void  delete(String id);
+	
+	public List<Sitio> findByDepId(Long id_reg);
 
 }

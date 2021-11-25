@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +28,9 @@ public class Region implements Serializable{
 	@Id
 	private long id_reg;
 	private String nombre_reg;
-	private long id_dep_fk ;
+		
+	@DBRef
+	public Departamento dep;
 	
 	public Region() {
 		super();
@@ -36,7 +39,6 @@ public class Region implements Serializable{
 	public Region(String nombre_reg, long id_dep_fk) {
 		super();
 		this.nombre_reg = nombre_reg;
-		this.id_dep_fk = id_dep_fk;
 	}
 
 	public long getId_reg() {
@@ -55,22 +57,22 @@ public class Region implements Serializable{
 		this.nombre_reg = nombre_reg;
 	}
 
-	public long getId_dep_fk() {
-		return id_dep_fk;
+	public Departamento getDep() {
+		return dep;
 	}
 
-	public void setId_dep_fk(long id_dep_fk) {
-		this.id_dep_fk = id_dep_fk;
+	public void setDep(Departamento dep) {
+		this.dep = dep;
 	}
 
 	@Override
 	public String toString() {
-		return "Region [id_reg=" + id_reg + ", nombre_reg=" + nombre_reg + ", id_dep_fk=" + id_dep_fk + ", getId_reg()="
-				+ getId_reg() + ", getNombre_reg()=" + getNombre_reg() + ", getId_dep_fk()=" + getId_dep_fk()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "Region [id_reg=" + id_reg + ", nombre_reg=" + nombre_reg + ", dep=" + dep + ", getId_reg()="
+				+ getId_reg() + ", getNombre_reg()=" + getNombre_reg() + ", getDep()=" + getDep() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-
+	
+	
 	
 	
 	

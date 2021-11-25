@@ -1,8 +1,5 @@
 package com.turisApp;
 
-
-import java.util.Collections;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,11 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TurisApplication {
 
 	public static void main(String[] args) {
-	SpringApplication app = new SpringApplication(TurisApplication.class);
+	/*SpringApplication app = new SpringApplication(TurisApplication.class);
 		app.setDefaultProperties(Collections.singletonMap("server.port","8083"));
-		app.run(args);
+		app.run(args);*/
 
-		//SpringApplication.run(TurisApplication.class, args);
+		SpringApplication.run(TurisApplication.class, args);
 	}
 
 }

@@ -39,4 +39,10 @@ public class SitioServiceImpl implements ISitioService {
 		sitioDao.deleteById(id);
 	}
 
+	@Override
+	public List<Sitio> findByDepId(Long id_reg) {
+		// TODO Auto-generated method stub
+		return sitioDao.findByRegionesId(id_reg);
+	}
+
 }

@@ -35,4 +35,9 @@ public class RegionServiceImpl implements IRegionService {
 		regionDao.deleteById(id);
 	}
 
+	@Override
+	public List<Region> findByDepId(String idDep) {
+		return regionDao.findByDepId(idDep);
+	}
+
 }

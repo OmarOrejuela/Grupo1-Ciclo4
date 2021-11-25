@@ -1,9 +1,11 @@
 package com.turisApp.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -29,17 +31,22 @@ public class Comida_Tipica implements Serializable {
 	private String descripcion_plat;
 	private String imagen_plat;
 	private String nombre_plat;
-	private String id_sit_fk;
 	
+	@DBRef
+	public List<Sitio> sitios;
+	
+	
+
 	public Comida_Tipica() {
+		super();
 	}
 
-	public Comida_Tipica(String descripcion_plat, String imagen_plat, String nombre_plat, String id_sit_fk) {
+	public Comida_Tipica(String descripcion_plat, String imagen_plat, String nombre_plat, List<Sitio> sitios) {
 		super();
 		this.descripcion_plat = descripcion_plat;
 		this.imagen_plat = imagen_plat;
 		this.nombre_plat = nombre_plat;
-		this.id_sit_fk = id_sit_fk;
+		this.sitios = sitios;
 	}
 
 	public long getId_pla() {
@@ -74,25 +81,23 @@ public class Comida_Tipica implements Serializable {
 		this.nombre_plat = nombre_plat;
 	}
 
-	public String getId_sit_fk() {
-		return id_sit_fk;
+	public List<Sitio> getSitios() {
+		return sitios;
 	}
 
-	public void setId_sit_fk(String id_sit_fk) {
-		this.id_sit_fk = id_sit_fk;
+	public void setSitios(List<Sitio> sitios) {
+		this.sitios = sitios;
 	}
 
 	@Override
 	public String toString() {
 		return "Comida_Tipica [id_pla=" + id_pla + ", descripcion_plat=" + descripcion_plat + ", imagen_plat="
-				+ imagen_plat + ", nombre_plat=" + nombre_plat + ", id_sit_fk=" + id_sit_fk + ", getId_pla()="
-				+ getId_pla() + ", getDescripcion_plat()=" + getDescripcion_plat() + ", getImagen_plat()="
-				+ getImagen_plat() + ", getNombre_plat()=" + getNombre_plat() + ", getId_sit_fk()=" + getId_sit_fk()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ imagen_plat + ", nombre_plat=" + nombre_plat + ", sitios=" + sitios + ", getId_pla()=" + getId_pla()
+				+ ", getDescripcion_plat()=" + getDescripcion_plat() + ", getImagen_plat()=" + getImagen_plat()
+				+ ", getNombre_plat()=" + getNombre_plat() + ", getSitios()=" + getSitios() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 	
-	
-
 }
+	

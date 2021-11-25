@@ -1,6 +1,7 @@
 package com.turisApp.models.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "sitios")
@@ -8,26 +9,26 @@ public class Sitio {
 
 	@Id
 	private String id_sit;
+	private String nombre_sit;
 	private String descripcion_sit;
 	private String imagen_sit;
-	private String nombre_sit;
-	private long id_trg_fk;
+	
+	@DBRef
+	public Region regiones;
+	
 
 	public Sitio() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Sitio(String id_sit, String descripcion_sit, String imagen_sit, String nombre_sit, Integer id_trg_fk) {
+	public Sitio(String id_sit, String nombre_sit, String descripcion_sit, String imagen_sit, Region regiones) {
 		super();
 		this.id_sit = id_sit;
+		this.nombre_sit = nombre_sit;
 		this.descripcion_sit = descripcion_sit;
 		this.imagen_sit = imagen_sit;
-		this.nombre_sit = nombre_sit;
-		this.id_trg_fk = id_trg_fk;
+		this.regiones = regiones;
 	}
-
-
 
 	public String getId_sit() {
 		return id_sit;
@@ -35,6 +36,14 @@ public class Sitio {
 
 	public void setId_sit(String id_sit) {
 		this.id_sit = id_sit;
+	}
+
+	public String getNombre_sit() {
+		return nombre_sit;
+	}
+
+	public void setNombre_sit(String nombre_sit) {
+		this.nombre_sit = nombre_sit;
 	}
 
 	public String getDescripcion_sit() {
@@ -53,30 +62,24 @@ public class Sitio {
 		this.imagen_sit = imagen_sit;
 	}
 
-	public String getNombre_sit() {
-		return nombre_sit;
+	public Region getRegiones() {
+		return regiones;
 	}
 
-	public void setNombre_sit(String nombre_sit) {
-		this.nombre_sit = nombre_sit;
-	}
-
-	public long getId_trg_fk() {
-		return id_trg_fk;
-	}
-
-	public void setId_trg_fk(long id_trg_fk) {
-		this.id_trg_fk = id_trg_fk;
+	public void setRegiones(Region regiones) {
+		this.regiones = regiones;
 	}
 
 	@Override
 	public String toString() {
-		return "Sitio [id_sit=" + id_sit + ", descripcion_sit=" + descripcion_sit + ", imagen_sit=" + imagen_sit
-				+ ", nombre_sit=" + nombre_sit + ", id_trg_fk=" + id_trg_fk + ", getId_sit()=" + getId_sit()
-				+ ", getDescripcion_sit()=" + getDescripcion_sit() + ", getImagen_sit()=" + getImagen_sit()
-				+ ", getNombre_sit()=" + getNombre_sit() + ", getId_trg_fk()=" + getId_trg_fk() + ", getClass()="
+		return "Sitio [id_sit=" + id_sit + ", nombre_sit=" + nombre_sit + ", descripcion_sit=" + descripcion_sit
+				+ ", imagen_sit=" + imagen_sit + ", regiones=" + regiones + ", getId_sit()=" + getId_sit()
+				+ ", getNombre_sit()=" + getNombre_sit() + ", getDescripcion_sit()=" + getDescripcion_sit()
+				+ ", getImagen_sit()=" + getImagen_sit() + ", getRegiones()=" + getRegiones() + ", getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
+
 
 	
 

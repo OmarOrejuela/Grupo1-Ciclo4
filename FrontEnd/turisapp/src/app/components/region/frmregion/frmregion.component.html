@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center mb-2">
+    <div class="card mt-2" style="width: 40rem;">
+        <div class="card-header">Gestion Regiones </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="frmRegistro" id="frmdatareg">
+                            <div class="form-group">
+                                <label for="nombre_reg">Nombre de la Región</label>
+                                <input formControlName="nombre_reg" type="text" class="form-control" id="nombre_reg" aria-describedby="nombre_reg">
+                                <ng-container *ngFor="let validation of validationMessage.nombre_reg">
+                                    <div *ngIf="frmRegistro.controls['nombre_reg'].hasError(validation.type) && (frmRegistro.controls['nombre_reg'].dirty || frmRegistro.controls['nombre_reg'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+                                <label for="id_dep_fk">Departamento</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Departamento</option>
+                                    <option value="id_dep_fk"></option>                                    
+                                </select>
+                                <input formControlName="id_dep_fk" type="text" class="form-control" id="id_dep_fk" aria-describedby="id_dep_fk">
+                                <ng-container *ngFor="let validation of validationMessage.id_dep_fk">
+                                    <div *ngIf="frmRegistro.controls['id_dep_fk'].hasError(validation.type) && (frmRegistro.controls['id_dep_fk'].dirty || frmRegistro.controls['id_dep_fk'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3"><input id="newOp" class="btn btn-primary btn-block" type="button" value="Nuevo"></div>
+                    <div class="col-3"><input id="saveOp" class="btn btn-success btn-block" type="button" value="Guardar"></div>
+                    <div class="col-3"><input id="editarOp" class="btn btn-warning btn-block" type="button" value="Editar"></div>
+                    <div class="col-3"><input id="cancelOp" class="btn btn-secondary btn-block" type="button" value="Cancelar"></div>
+                </div>
+                <div class="row mt-1 mb-1">
+                    <div class="col-12">
+                        <!-- Alertas edicion -->
+                        <div class="alert alert-success" role="alert" *ngIf="estadoProcesoEditar==0">
+                            El registro se actualizo correctamente en la base de datos
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="estadoProcesoEditar>0">
+                            Ocurrio un error al momento de editar el registro..Contacte a soporte.
+                        </div>
+                        <!-- Alertas Guardar -->
+                        <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+                            El registro se creo correctamente en la base de datos
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+                            Ocurrio un error al momento de guardar el registro..Contacte a soporte.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
