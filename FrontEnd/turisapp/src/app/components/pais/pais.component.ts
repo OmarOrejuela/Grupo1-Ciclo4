@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-pais',
   templateUrl: './pais.component.html',
@@ -9,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PaisComponent implements OnInit {
 
   constructor() { }
-   
+
   ngOnInit(): void {
   }
 

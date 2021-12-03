@@ -7,7 +7,6 @@ import { MenuComponent } from './components/menu/menu.component'
 import { InicioComponent } from './components/inicio/inicio.component'
 import { LoginComponent } from './components/login/login.component'
 import { ComidaComponent } from './components/comida/comida.component'
-import { PaisComponent } from './components/pais/pais.component'
 import { RegionComponent } from './components/region/region.component'
 import { SitioComponent } from './components/sitio/sitio.component'
 import { DepartamentoComponent } from './components/departamento/departamento.component'
@@ -24,6 +23,8 @@ import { FrmcomidaComponent } from './components/comida/frmcomida/frmcomida.comp
 import { LstcomidaComponent } from './components/comida/lstcomida/lstcomida.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { DataTablesModule } from 'angular-datatables'
+import { PaisComponent } from './components/pais/pais.component'
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

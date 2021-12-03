@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+import { PaisResponse } from 'src/app/models/pais-response';
+import { PaisService } from 'src/app/services/pais.service';
+
+declare var $: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-lstpais',
@@ -6,10 +13,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lstpais.component.scss']
 })
 export class LstpaisComponent implements OnInit {
-
-  constructor() { }
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement!: DataTableDirective;
+  misPaises:PaisResponse[]=[];
+  idPk:String='0';
+  estadoProceso:Number=-1;
+  constructor(private servPais:PaisService) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
+    this.CargarPaises();
   }
+  async CargarPaises(){
+    const result= await this.servPais.listarPaises();
+    this.misPaises=result;
+  }
+  rerender(): void {
+    
+    this.servPais.listarPaises().then(result=>{
+      this.misPaises=result.data;
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.CargarPaises();
+      });
+    });
+  }
+  seleccionReg(id:String){
+    this.idPk=id;
+    $('#confirmacion').modal('show');
+  }
+  eliminarRegistro(){
+    let jQueryInstance=this;
+    this.servPais.DeletePais(this.idPk).subscribe(result=>{
 
+          this.estadoProceso=0;
+
+    });
+    setTimeout(function(){
+      jQueryInstance.estadoProceso=-1;
+      $('#confirmacion').modal('hide');
+      jQueryInstance.rerender();
+    },3000);
+
+  }
 }

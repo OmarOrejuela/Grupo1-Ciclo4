@@ -4,7 +4,6 @@ import { LoginComponent } from './components/login/login.component'
 import { InicioComponent } from './components/inicio/inicio.component'
 import { SitioComponent } from './components/sitio/sitio.component'
 import { RegionComponent } from './components/region/region.component'
-import { PaisComponent } from './components/pais/pais.component'
 import { WelcomeComponent } from './components/welcome/welcome.component'
 import { ComidaComponent } from './components/comida/comida.component'
 import { DepartamentoComponent } from './components/departamento/departamento.component'
@@ -18,6 +17,7 @@ import { FrmregionComponent } from './components/region/frmregion/frmregion.comp
 import { LstregionComponent } from './components/region/lstregion/lstregion.component'
 import { FrmdepartamentoComponent } from './components/departamento/frmdepartamento/frmdepartamento.component'
 import { LstdepartamentoComponent } from './components/departamento/lstdepartamento/lstdepartamento.component'
+import { PaisComponent } from './components/pais/pais.component'
 
 const routes: Routes = [
   { path: 'autenticacion', component: LoginComponent },
@@ -31,7 +31,7 @@ const routes: Routes = [
         component: SitioComponent,
         children: [
           { path: 'registrositio', component: FrmsitioComponent },
-          { path: 'rversitio', component: LstsitioComponent },
+          { path: 'versitio', component: LstsitioComponent },
           { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
         ],
       },
@@ -40,7 +40,7 @@ const routes: Routes = [
         component: RegionComponent,
         children: [
           { path: 'registroregion', component: FrmregionComponent },
-          { path: 'rverregion', component: LstregionComponent },
+          { path: 'verregion', component: LstregionComponent },
           { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
         ],
       },
@@ -49,7 +49,7 @@ const routes: Routes = [
         component: PaisComponent,
         children: [
           { path: 'registropais', component: FrmpaisComponent },
-          { path: 'rverpais', component: LstpaisComponent },
+          { path: 'verpais', component: LstpaisComponent },
           { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
         ],
       },
@@ -58,7 +58,7 @@ const routes: Routes = [
         component: ComidaComponent,
         children: [
           { path: 'registrocomida', component: FrmcomidaComponent },
-          { path: 'rvercomida', component: LstcomidaComponent },
+          { path: 'vercomida', component: LstcomidaComponent },
           { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
         ],
       },
@@ -67,7 +67,7 @@ const routes: Routes = [
         component: DepartamentoComponent,
         children: [
           { path: 'registrodepartamento', component: FrmdepartamentoComponent },
-          { path: 'rverdepartamento', component: LstdepartamentoComponent },
+          { path: 'verdepartamento', component: LstdepartamentoComponent },
           { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
         ],
       },
