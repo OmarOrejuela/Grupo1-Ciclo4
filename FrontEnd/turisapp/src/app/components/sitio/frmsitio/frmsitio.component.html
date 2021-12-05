@@ -26,7 +26,7 @@
 
                                 <label for="descripcion_sit">Descripción del Sitio</label>
                                 <input formControlName="descripcion_sit" type="text" class="form-control" id="descripcion_sit" aria-describedby="descripcion_sit">
-                                <ng-container *ngFor="let validation of validationMessage.nombre_sit">
+                                <ng-container *ngFor="let validation of validationMessage.descripcion_sit">
                                     <div *ngIf="frmRegistro.controls['descripcion_sit'].hasError(validation.type) && (frmRegistro.controls['descripcion_sit'].dirty || frmRegistro.controls['descripcion_sit'].touched)">
                                         <small class="text-danger">{{validation.message}}</small>
                                     </div>
@@ -34,7 +34,7 @@
 
                                 <label for="imagen_sit">Imagen del Sitio</label>
                                 <input formControlName="imagen_sit" type="text" class="form-control" id="imagen_sit" aria-describedby="imagen_sit">
-                                <ng-container *ngFor="let validation of validationMessage.nombre_sit">
+                                <ng-container *ngFor="let validation of validationMessage.imagen_sit">
                                     <div *ngIf="frmRegistro.controls['imagen_sit'].hasError(validation.type) && (frmRegistro.controls['imagen_sit'].dirty || frmRegistro.controls['imagen_sit'].touched)">
                                         <small class="text-danger">{{validation.message}}</small>
                                     </div>

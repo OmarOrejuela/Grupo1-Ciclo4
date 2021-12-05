@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 export class SitioService {
   URL_BASE = environment.API_URL;
   constructor(private http: HttpClient) { }
+  
   InsertRecord(data: any):Observable<any>{
     return this.http.post(`${this.URL_BASE}sitios`, data);
   }

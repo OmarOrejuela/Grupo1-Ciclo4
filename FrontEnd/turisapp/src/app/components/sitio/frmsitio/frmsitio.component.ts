@@ -120,7 +120,8 @@ export class FrmsitioComponent implements OnInit {
           id_reg: this.frmRegistro.controls['regiones'].value,
         },
       }
-      this.regServ
+      console.log(info)
+      this.sitServ
         .InsertRecord(info)
         .subscribe((result: { data: { idAux: any } }) => {
           this.estadoProceso = 0

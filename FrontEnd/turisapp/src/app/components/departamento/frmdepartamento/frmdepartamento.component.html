@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <form [formGroup]="frmRegistro" id="frmdatareg">
                             <div class="form-group">
-                                <label for="nombre_dep">Nombre del Departamneto</label>
+                                <label for="nombre_dep">Nombre del Departamento</label>
                                 <input formControlName="nombre_dep" type="text" class="form-control" id="nombre_dep" aria-describedby="nombre_dep">
                                 <ng-container *ngFor="let validation of validationMessage.nombre_dep">
                                     <div *ngIf="frmRegistro.controls['nombre_dep'].hasError(validation.type) && (frmRegistro.controls['nombre_dep'].dirty || frmRegistro.controls['nombre_dep'].touched)">
