@@ -1,1 +1,57 @@
-<p>lstcomida works!</p>
+<div class="container mt-3 mb-2">
+    <div class="row">
+        <div class="col-12">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Codigo Plato</th>
+                        <th>Descripción Plato</th>
+                        <th>Imagen del Plato</th>
+                        <th>Nombre del Plato</th>
+
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of misComi">
+                        <td>{{ item.id_pla }}</td>
+                        <td>{{ item.descripcion_plat }}</td>
+                        <td>{{ item.imagen_plat }}</td>
+                        <td>{{ item.nombre_plat }}</td>
+
+
+                        <td><img class="btn" src="assets/png/borrar.png" width="45px" (click)="seleccionReg(item.id_pla)"></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="misComi?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No se encontraron registros...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal animated fade fadeIn" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Eliminar</h2>
+            </div>
+            <div class="modal-body">
+                Desea eliminar el registro seleccionado.....
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+                El registro se elimino correctamente en la base de datos
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+                Ocurrio un error al momento de eliminar el registro..Contacte a soporte.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Si</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@ export class LstpaisComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement!: DataTableDirective;
   misPaises:PaisResponse[]=[];
-  idPk:String='0';
+  idPk:Number=0;
   estadoProceso:Number=-1;
   constructor(private servPais:PaisService) { }
 
@@ -30,12 +30,13 @@ export class LstpaisComponent implements OnInit {
     this.CargarPaises();
   }
   async CargarPaises(){
-    const result= await this.servPais.listarPaises();
+    const result= await this.servPais.ListarPaises();
     this.misPaises=result;
+    this.dtTrigger.next(this.misPaises);
   }
   rerender(): void {
     
-    this.servPais.listarPaises().then(result=>{
+    this.servPais.ListarPaises().then(result=>{
       this.misPaises=result.data;
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
@@ -45,7 +46,7 @@ export class LstpaisComponent implements OnInit {
       });
     });
   }
-  seleccionReg(id:String){
+  seleccionReg(id:Number){
     this.idPk=id;
     $('#confirmacion').modal('show');
   }

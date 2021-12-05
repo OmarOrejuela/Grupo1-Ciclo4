@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component'
 import { InicioComponent } from './components/inicio/inicio.component'
 import { SitioComponent } from './components/sitio/sitio.component'
 import { RegionComponent } from './components/region/region.component'
+import { PaisComponent } from './components/pais/pais.component'
 import { WelcomeComponent } from './components/welcome/welcome.component'
 import { ComidaComponent } from './components/comida/comida.component'
 import { DepartamentoComponent } from './components/departamento/departamento.component'
@@ -17,7 +18,6 @@ import { FrmregionComponent } from './components/region/frmregion/frmregion.comp
 import { LstregionComponent } from './components/region/lstregion/lstregion.component'
 import { FrmdepartamentoComponent } from './components/departamento/frmdepartamento/frmdepartamento.component'
 import { LstdepartamentoComponent } from './components/departamento/lstdepartamento/lstdepartamento.component'
-import { PaisComponent } from './components/pais/pais.component'
 
 const routes: Routes = [
   { path: 'autenticacion', component: LoginComponent },

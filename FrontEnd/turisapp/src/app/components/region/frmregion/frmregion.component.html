@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-center mb-2">
     <div class="card mt-2" style="width: 40rem;">
-        <div class="card-header">Gestion Regiones </div>
+        <div class="card-header">
+            Gestion Regiones
+        </div>
         <div class="card-body">
             <div class="container">
                 <div class="row">
@@ -14,14 +16,16 @@
                                         <small class="text-danger">{{validation.message}}</small>
                                     </div>
                                 </ng-container>
-                                <label for="id_dep_fk">Departamento</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Departamento</option>
-                                    <option value="id_dep_fk"></option>                                    
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleDataList" class="form-label">Seleccione el Departamento</label>
+                                <select formControlName="dep" class="form-select" aria-label="Default select example">
+                                    <option selected>Seleccione un Departamentos</option>
+                                    <option value="{{item.id_dep}}" *ngFor="let item of misDepartamentos">{{item.nombre_dep}}
+                                    </option>
                                 </select>
-                                <input formControlName="id_dep_fk" type="text" class="form-control" id="id_dep_fk" aria-describedby="id_dep_fk">
-                                <ng-container *ngFor="let validation of validationMessage.id_dep_fk">
-                                    <div *ngIf="frmRegistro.controls['id_dep_fk'].hasError(validation.type) && (frmRegistro.controls['id_dep_fk'].dirty || frmRegistro.controls['id_dep_fk'].touched)">
+                                <ng-container *ngFor="let validation of validationMessage.dep">
+                                    <div *ngIf="frmRegistro.controls['dep'].hasError(validation.type) && (frmRegistro.controls['dep'].dirty || frmRegistro.controls['dep'].touched)">
                                         <small class="text-danger">{{validation.message}}</small>
                                     </div>
                                 </ng-container>
@@ -30,8 +34,8 @@
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-3"><input id="newOp" class="btn btn-primary btn-block" type="button" value="Nuevo"></div>
-                    <div class="col-3"><input id="saveOp" class="btn btn-success btn-block" type="button" value="Guardar"></div>
+                    <div class="col-3"><input id="newOp" class="btn btn-primary btn-block" type="button" (click)="nuevoReg()" value="Nuevo"> </div>
+                    <div class="col-3"><input id="saveOp" class="btn btn-success btn-block" type="button" (click)="onSubmitRegion()" value="Guardar"></div>
                     <div class="col-3"><input id="editarOp" class="btn btn-warning btn-block" type="button" value="Editar"></div>
                     <div class="col-3"><input id="cancelOp" class="btn btn-secondary btn-block" type="button" value="Cancelar"></div>
                 </div>

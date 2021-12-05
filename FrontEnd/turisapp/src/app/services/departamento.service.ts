@@ -24,7 +24,7 @@ export class DepartamentoService {
     const response = await fetch(`${this.URL_BASE}departamentos/${id}`);
     return await response.json();
   }
-  async ListRecords(){
+  async LisrRecord(){
     const response = await fetch(`${this.URL_BASE}departamentos`);
     return await response.json();
   } 

@@ -1,1 +1,82 @@
-<p>frmcomida works!</p>
+<div class="d-flex justify-content-center mb-2">
+    <div class="card mt-2" style="width: 40rem;">
+        <div class="card-header">
+            Gestion Sitios
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="frmRegistro" id="frmdatareg">
+                            <div class="form-group">
+                                <label for="descripcion_plat">Descripción del Platos</label>
+                                <input formControlName="descripcion_plat" type="text" class="form-control" id="descripcion_plat" aria-describedby="descripcion_plat">
+                                <ng-container *ngFor="let validation of validationMessage.descripcion_plat">
+                                    <div *ngIf="frmRegistro.controls['descripcion_plat'].hasError(validation.type) && (frmRegistro.controls['descripcion_plat'].dirty || frmRegistro.controls['descripcion_plat'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+
+                                <label for="imagen_plat">Imagen de Platos</label>
+                                <input formControlName="imagen_plat" type="text" class="form-control" id="imagen_plat" aria-describedby="imagen_plat">
+                                <ng-container *ngFor="let validation of validationMessage.imagen_plat">
+                                    <div *ngIf="frmRegistro.controls['imagen_plat'].hasError(validation.type) && (frmRegistro.controls['imagen_plat'].dirty || frmRegistro.controls['imagen_plat'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+                                <label for="nombre_plat">Nombre del Plato</label>
+                                <input formControlName="nombre_plat" type="text" class="form-control" id="nombre_plat" aria-describedby="nombre_plat">
+                                <ng-container *ngFor="let validation of validationMessage.nombre_plat">
+                                    <div *ngIf="frmRegistro.controls['nombre_plat'].hasError(validation.type) && (frmRegistro.controls['nombre_plat'].dirty || frmRegistro.controls['nombre_plat'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleDataList" class="form-label">Seleccione el Sitio</label>
+                                <select formControlName="sitio" class="form-select" aria-label="Default select example">
+                                    <option selected>Seleccione un Sitio</option>
+                                    <option value="{{item.id_sit}}" *ngFor="let item of misSit">{{item.nombre_sit}}
+                                    </option>
+                                </select>
+                                <ng-container *ngFor="let validation of validationMessage.sitio">
+                                    <div *ngIf="frmRegistro.controls['sitio'].hasError(validation.type) && (frmRegistro.controls['sitio'].dirty || frmRegistro.controls['sitio'].touched)">
+                                        <small class="text-danger">{{validation.message}}</small>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3"><input id="newOp" class="btn btn-primary btn-block" type="button" (click)="nuevoReg()" value="Nuevo"></div>
+                    <div class="col-3"><input id="saveOp" class="btn btn-success btn-block" type="button" (click)="onSubmitSitio()" value="Guardar"></div>
+                    <div class="col-3"><input id="editarOp" class="btn btn-warning btn-block" type="button" value="Editar"></div>
+                    <div class="col-3"><input id="cancelOp" class="btn btn-secondary btn-block" type="button" value="Cancelar"></div>
+                </div>
+                <div class="row mt-1 mb-1">
+                    <div class="col-12">
+                        <!-- Alertas edicion -->
+                        <div class="alert alert-success" role="alert" *ngIf="estadoProcesoEditar==0">
+                            El registro se actualizo correctamente en la base de datos
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="estadoProcesoEditar>0">
+                            Ocurrio un error al momento de editar el registro..Contacte a soporte.
+                        </div>
+                        <!-- Alertas Guardar -->
+                        <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+                            El registro se creo correctamente en la base de datos
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+                            Ocurrio un error al momento de guardar el registro..Contacte a soporte.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
